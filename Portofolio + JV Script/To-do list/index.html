@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List Pink</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffe4ec;
+        color: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .todo-container {
+        background-color: #fff0f5;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        width: 300px;
+        text-align: center;
+    }
+    h2 {
+        color: #ff5c8a;
+    }
+    input {
+        width: 80%;
+        padding: 8px;
+        border: 2px solid #ffb6c1;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #ff85a2;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ff5c8a;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+    li {
+        background-color: #ffd6dc;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+    li span {
+        cursor: pointer;
+        color: #ff5c8a;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="todo-container">
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Tambah tugas...">
+    <button onclick="addTask()">Tambah</button>
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+    function addTask() {
+        let input = document.getElementById("taskInput");
+        let task = input.value.trim();
+        if (task === "") return;
+        
+        let li = document.createElement("li");
+        li.innerHTML = `${task} <span onclick="this.parentElement.remove()">❌</span>`;
+        document.getElementById("taskList").appendChild(li);
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
